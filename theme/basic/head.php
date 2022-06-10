@@ -208,8 +208,18 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
             $("#gnb_all, #gnb_all_bg").hide();
         });
     });
-
     </script>
+
+<!--
+    <script>
+		$(function(){
+			var path = window.location.pathname;
+			if ( path.length > 1 ) {
+		$('a[href*="' + path + '"]').addClass('text-[#0f4546] font-bold');
+			}
+		});
+	</script>
+-->
 </div>
 <!-- } 상단 끝 -->
 

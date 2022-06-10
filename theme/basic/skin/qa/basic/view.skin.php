@@ -10,7 +10,7 @@ add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 
 <!-- 게시물 읽기 시작 { -->
 
-<article id="bo_v">
+<article id="bo_v" class="container pt-40 pb-20 px-5">
     <header>
         <h2 id="bo_v_title">
             <?php

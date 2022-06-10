@@ -10,7 +10,7 @@ if ($is_checkbox) $colspan++;
 add_stylesheet('<link rel="stylesheet" href="'.$qa_skin_url.'/style.css">', 0);
 ?>
 
-<div id="bo_list">
+<div id="bo_list" class="container px-5 pt-40 ">
 	<?php if ($category_option) { ?>
     <!-- 카테고리 시작 { -->
     <nav id="bo_cate">

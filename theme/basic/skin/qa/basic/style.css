@@ -3,7 +3,7 @@
 
 /* 게시판 버튼 */
 /* 쓰기 버튼 */
-#bo_w .btn_submit {padding:0 20px;font-size:1.167em}
+#bo_w .btn_submit {padding:0 20px;font-size:1.167em; background-color:#1471f6}
 #bo_w .btn_cancel {font-size:1.167em;border-radius:3px}
 
 /* 기본 테이블 */
