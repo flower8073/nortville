@@ -21,33 +21,18 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 ?>
 
 <!-- 상단 시작 { -->
-<div id="hd">
+<div id="hd" class="bg-white fixed top-0 w-full shadow z-10">
+    <!--
     <h1 id="hd_h1"><?php echo $g5['title'] ?></h1>
     <div id="skip_to_container"><a href="#container">본문 바로가기</a></div>
-
+        -->
     <?php
     if(defined('_INDEX_')) { // index에서만 실행
         include G5_BBS_PATH.'/newwin.inc.php'; // 팝업레이어
     }
     ?>
-    <div id="tnb">
-    	<div class="inner">
-            <?php if(G5_COMMUNITY_USE) { ?>
-    		<ul id="hd_define">
-    			<li class="active"><a href="<?php echo G5_URL ?>/">커뮤니티</a></li>
-                <?php if (defined('G5_USE_SHOP') && G5_USE_SHOP) { ?>
-    			<li><a href="<?php echo G5_SHOP_URL ?>/">쇼핑몰</a></li>
-                <?php } ?>
-    		</ul>
-            <?php } ?>
-			<ul id="hd_qnb">
-	            <li><a href="<?php echo G5_BBS_URL ?>/faq.php">FAQ</a></li>
-	            <li><a href="<?php echo G5_BBS_URL ?>/qalist.php">Q&A</a></li>
-	            <li><a href="<?php echo G5_BBS_URL ?>/new.php">새글</a></li>
-	            <li><a href="<?php echo G5_BBS_URL ?>/current_connect.php" class="visit">접속자<strong class="visit-num"><?php echo connect('theme/basic'); // 현재 접속자수, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정  ?></strong></a></li>
-	        </ul>
-		</div>
-    </div>
+    <!--
+
     <div id="hd_wrapper">
 
         <div id="logo">
@@ -94,8 +79,6 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                 </script>
 
             </fieldset>
-                
-            <?php echo popular('theme/basic'); // 인기검색어, 테마의 스킨을 사용하려면 스킨을 theme/basic 과 같이 지정  ?>
         </div>
         <ul class="hd_login">        
             <?php if ($is_member) {  ?>
@@ -111,12 +94,18 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 
         </ul>
     </div>
-    
+    -->
     <nav id="gnb">
         <h2>메인메뉴</h2>
-        <div class="gnb_wrap">
-            <ul id="gnb_1dul">
-                <li class="gnb_1dli gnb_mnal"><button type="button" class="gnb_menu_btn" title="전체메뉴"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only">전체메뉴열기</span></button></li>
+        <div class="gnb_wrap flex justify-between h-[90px] items-center container px-5">
+            <div id="logo" class="h-[90px]">
+                <a href="<?php echo G5_URL ?>" class="flex items-center justify-center h-full">
+                    <img src="<?php echo G5_IMG_URL ?>/logo.png" alt="<?php echo $config['cf_title']; ?>">
+                </a>
+            </div>
+            <ul id="gnb_1dul" class="lg:flex items-center hidden">
+
+                <!--<li class="gnb_1dli gnb_mnal"><button type="button" class="gnb_menu_btn" title="전체메뉴"><i class="fa fa-bars" aria-hidden="true"></i><span class="sound_only">전체메뉴열기</span></button></li>-->
                 <?php
 				$menu_datas = get_menu_db(0, true);
 				$gnb_zindex = 999; // gnb_1dli z-index 값 설정용
@@ -125,8 +114,9 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                     if( empty($row) ) continue;
                     $add_class = (isset($row['sub']) && $row['sub']) ? 'gnb_al_li_plus' : '';
                 ?>
+                
                 <li class="gnb_1dli <?php echo $add_class; ?>" style="z-index:<?php echo $gnb_zindex--; ?>">
-                    <a href="<?php echo $row['me_link']; ?>" target="_<?php echo $row['me_target']; ?>" class="gnb_1da"><?php echo $row['me_name'] ?></a>
+                    <a href="<?php echo $row['me_link']; ?>" target="_<?php echo $row['me_target']; ?>" class="gnb_1da text-base"><?php echo $row['me_name'] ?></a>
                     <?php
                     $k = 0;
                     foreach( (array) $row['sub'] as $row2 ){
@@ -153,9 +143,24 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                     <li class="gnb_empty">메뉴 준비 중입니다.<?php if ($is_admin) { ?> <a href="<?php echo G5_ADMIN_URL; ?>/menu_list.php">관리자모드 &gt; 환경설정 &gt; 메뉴설정</a>에서 설정하실 수 있습니다.<?php } ?></li>
                 <?php } ?>
             </ul>
-            <div id="gnb_all">
-                <h2>전체메뉴</h2>
-                <ul class="gnb_al_ul">
+            <div class="phone lg:block hidden">
+                <a href="tel:031-772-4006" class="text-2xl flex items-center text-[#216162] font-bold">
+                    <img src="<?php echo G5_IMG_URL ?>/icon_phone.png" class="pr-2">031-772-4006
+                </a>
+            </div>
+            <div class="m_menu lg:hidden block">
+                <a href="javascript:void(0);">
+                    <span class="w-10 bg-black h-1 block relative before:absolute before:bg-black before:content-[''] before:w-10 before:h-1 before:-top-3 after:absolute after:bg-black after:content-[''] after:w-10 after:h-1 after:-bottom-3"></span>
+                </a>
+            </div>
+        </div>
+        <div id="gnb_all" class="shadow">
+            <div class="container px-5">
+                <!--<button type="button" class="gnb_close_btn ml-auto block">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </button>-->
+
+                <ul class="gnb_al_ul pt-5">
                     <?php
                     
                     $i = 0;
@@ -185,16 +190,18 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
                     if ($i == 0) {  ?>
                         <li class="gnb_empty">메뉴 준비 중입니다.<?php if ($is_admin) { ?> <br><a href="<?php echo G5_ADMIN_URL; ?>/menu_list.php">관리자모드 &gt; 환경설정 &gt; 메뉴설정</a>에서 설정하실 수 있습니다.<?php } ?></li>
                     <?php } ?>
+                    <a href="tel:031-772-4006" class="text-2xl flex items-center text-[#216162] font-bold pb-5 justify-center">
+                        <img src="<?php echo G5_IMG_URL ?>/icon_phone.png" class="pr-2">031-772-4006
+                    </a>
                 </ul>
-                <button type="button" class="gnb_close_btn"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
-            <div id="gnb_all_bg"></div>
         </div>
+        <div id="gnb_all_bg"></div>
     </nav>
     <script>
     
     $(function(){
-        $(".gnb_menu_btn").click(function(){
+        $(".m_menu").click(function(){
             $("#gnb_all, #gnb_all_bg").show();
         });
         $(".gnb_close_btn, #gnb_all_bg").click(function(){
@@ -211,7 +218,5 @@ include_once(G5_LIB_PATH.'/popular.lib.php');
 
 <!-- 콘텐츠 시작 { -->
 <div id="wrapper">
-    <div id="container_wr">
-   
-    <div id="container">
-        <?php if (!defined("_INDEX_")) { ?><h2 id="container_title"><span title="<?php echo get_text($g5['title']); ?>"><?php echo get_head_title($g5['title']); ?></span></h2><?php }
+    <div class="container-none">
+        

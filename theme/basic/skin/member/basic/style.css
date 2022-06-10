@@ -11,7 +11,7 @@
       transform:skew(8deg) rotate(3deg)}
 .mbskin .mbskin_box{border:1px solid #dde7e9;background:#fff}
 .mbskin .frm_input {width:100%}
-.mbskin .btn_submit {width:100%;margin:10px 0 0;height:45px;font-weight:bold;font-size:1.25em}
+.mbskin .btn_submit {width:100%;margin:10px 0 0;height:45px;font-weight:bold;font-size:1.25em;background:#1471f6}
 .mbskin h1 {margin:60px 0 30px;font-size:2em}
 /* ### 기본 스타일 커스터마이징 끝 ### */
 

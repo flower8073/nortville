@@ -94,8 +94,10 @@ unset($row);
 
     <ol>
 <?php
-$sql = " desc {$table_prefix}config";
-$result = @sql_query($sql, false, $dblink);
+//$sql = " desc {$table_prefix}config";
+//$result = @sql_query($sql, false, $dblink);
+$sql = "SHOW TABLES LIKE '{$table_prefix}config'";
+$result = @sql_fetch($sql, false, $dblink);
 
 // 그누보드5 재설치에 체크하였거나 그누보드5가 설치되어 있지 않다면
 if($g5_install || !$result) {
